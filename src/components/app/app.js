@@ -23,13 +23,7 @@ class App extends Component {
 
 	deleteItem = (id) => {
 		this.setState(({ data }) => {
-			// const index = data.findIndex(elem => elem.id === id)
-			// const before = data.slice(0, index);
-			// const after = data.slice(index + 1);
-			// const newArr = [...before, ...after]
-
 			return {
-				// data: newArr
 				data: data.filter(item => item.id !== id)
 			}
 		})
@@ -49,44 +43,6 @@ class App extends Component {
 				data: newArr
 			}
 		});
-	}
-
-	onToggleIncrease = (id) => {
-		// this.setState(({data}) => {
-		//   const index = data.findIndex(elem => elem.id === id);
-
-		//   const old = data[index];
-		//   const newItem = {...old, increase: !old.increase};
-		//   const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
-
-		//   return {
-		//     data: newArr
-		//   }
-		// })
-
-		this.setState(({ data }) => ({
-			data: data.map(item => {
-				if (item.id === id) {
-					return {
-						...item, increase: !item.increase
-					}
-				}
-				return item;
-			})
-		}))
-	}
-
-	onToggleRise = (id) => {
-		this.setState(({ data }) => ({
-			data: data.map(item => {
-				if (item.id === id) {
-					return {
-						...item, rise: !item.rise
-					}
-				}
-				return item;
-			})
-		}))
 	}
 
 	onToggleProp = (id, prop) => {
@@ -115,7 +71,6 @@ class App extends Component {
 					<AppFilter />
 				</div>
 
-				{/* <EmployeesList data={this.state.data} onDelete={this.deleteItem} onToggleIncrease={this.onToggleIncrease} onToggleRise={this.onToggleRise} /> */}
 				<EmployeesList data={this.state.data} onDelete={this.deleteItem} onToggleProp={this.onToggleProp} />
 				<EmployeesAddForm onAdd={this.addItem} />
 			</div>
